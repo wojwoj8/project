@@ -2,6 +2,7 @@ from collections import OrderedDict
 
 from django.db.models import Sum, Value
 from django.db.models.functions import Coalesce
+from .models import Expense
 
 
 def summary_per_category(queryset):
@@ -14,3 +15,7 @@ def summary_per_category(queryset):
         .values_list('category_name', 's')
     ))
 
+def total_amount_spent():
+    return(
+        Expense.objects.aggregate(total_ammount = Sum('amount'))
+    )
