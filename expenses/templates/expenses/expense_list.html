@@ -54,17 +54,11 @@
 		<td>{{total|floatformat:2}}</td>
 	</tr>
 	{% endfor %}
+	<tr>
+		<td><b> Total amount spent: </b></td>
+		<td><b>{{ total_amount_spent.total_ammount|floatformat:2 }}</b></td>
+	</tr>
   </tr>
 </table>
 
-<table border="1">
-	<caption>Total amount spent</caption>
-	<tr>
-	  <tr>
-		  <td>Total:</td>
-		  <td>{{ total_amount_spent.total_ammount|floatformat:2 }}</td>
-	  </tr>
-	
-	</tr>
-</table>
 {% endblock %}
