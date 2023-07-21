@@ -15,7 +15,7 @@ def summary_per_category(queryset):
         .values_list('category_name', 's')
     ))
 
-def total_amount_spent():
-    return(
-        Expense.objects.aggregate(total_ammount = Sum('amount'))
-    )
+
+
+def summary_per_yearmonth():
+    return
