@@ -1,7 +1,7 @@
 from collections import OrderedDict
 
 from django.db.models import Sum, Value
-from django.db.models.functions import Coalesce
+from django.db.models.functions import Coalesce, TruncMonth
 from .models import Expense
 
 
@@ -17,5 +17,14 @@ def summary_per_category(queryset):
 
 
 
-def summary_per_yearmonth():
-    return
+def summary_per_yearmonth(queryset):
+    return OrderedDict(sorted(
+        queryset
+        .annotate(month=TruncMonth('date'))
+        .order_by()
+        .values('month')
+        .annotate(s=Sum('amount'))
+        .values_list('month', 's')
+    ))
+
+    

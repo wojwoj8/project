@@ -56,7 +56,24 @@
 	{% endfor %}
 	<tr>
 		<td><b> Total amount spent: </b></td>
-		<td><b>{{ total_amount|floatformat:2 }}</b></td>
+		<td><b>{{total_amount|floatformat:2}}</b></td>
+	</tr>
+  </tr>
+</table>
+
+<hr>
+<table border="1">
+  <caption>Summary per year-month</caption>
+  <tr>
+    {% for date, total in summary_per_yearmonth.items %}
+	<tr>
+		<td>{{date|date:"Y F"}}</td>
+		<td>{{total|floatformat:2}}</td>
+	</tr>
+	{% endfor %}
+	<tr>
+		<td><b> Total amount spent: </b></td>
+		<td><b>{{total_amount|floatformat:2}}</b></td>
 	</tr>
   </tr>
 </table>
